@@ -1,7 +1,11 @@
 package com.example.mall.security;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.mall.entity.SysRole;
+import com.example.mall.entity.SysUser;
+import com.example.mall.entity.SysUserRole;
+import com.example.mall.service.SysRoleService;
+import com.example.mall.service.SysUserRoleService;
+import com.example.mall.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,10 +16,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Service("userDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
-    private Logger logger = LoggerFactory.getLogger(LoginController.class);
     @Autowired
     private SysUserService userService;
 
@@ -24,11 +29,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private SysUserRoleService userRoleService;
-
-    @Override
-    public UserDetails loadUserByUsername() throws UsernameNotFoundException {
-        return loadUserByUsername();
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
